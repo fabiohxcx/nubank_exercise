@@ -1,1 +1,1 @@
-enum PageState {initial, loading, loaded, error, tokenExpired}
+enum PageState {initial, loading, loaded, error}

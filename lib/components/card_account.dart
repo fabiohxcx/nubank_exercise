@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:nuconta_marketplace/feature/home/home_store.dart';
 import 'package:nuconta_marketplace/shared/colors.dart';
+import 'package:nuconta_marketplace/utils/service_locator.dart';
+import 'package:nuconta_marketplace/utils/text_utils.dart';
 
 class CardAccount extends StatelessWidget {
+  final homeStore = locator.get<HomeStore>();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -46,15 +52,21 @@ class CardAccount extends StatelessWidget {
                     Text(
                       'Balance available',
                       style: TextStyle(
-                          fontWeight: FontWeight.w300, color: kNuPurple8E8390,),
+                        fontWeight: FontWeight.w300,
+                        color: kNuPurple8E8390,
+                      ),
                     ),
-                    Text(
-                      '\$ 800,00',
-                      style: TextStyle(
-                          fontFamily: "Gotham",
-                          fontSize: 30,
-                          fontWeight: FontWeight.w300,
-                          color: kNuBlue),
+                    Observer(
+                      builder: (_) {
+                        return Text(
+                          '${getCurrencyFormated(homeStore.balance)}',
+                          style: TextStyle(
+                              fontFamily: "Gotham",
+                              fontSize: 30,
+                              fontWeight: FontWeight.w300,
+                              color: kNuBlue),
+                        );
+                      },
                     ),
                     SizedBox(height: 10),
                   ],
@@ -74,9 +86,14 @@ class CardAccount extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('VIEW TRANSACTION HISTORY',
-                          style: TextStyle(color: kNuGreen, fontSize: 10),),
-                          Icon(Icons.chevron_right, color: kNuGreen,)
+                          Text(
+                            'VIEW TRANSACTION HISTORY',
+                            style: TextStyle(color: kNuGreen, fontSize: 10),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: kNuGreen,
+                          )
                         ],
                       )),
                   onTap: () {
@@ -93,14 +110,18 @@ class CardAccount extends StatelessWidget {
           child: Material(
             child: new InkWell(
               customBorder: new CircleBorder(),
-              onTap: () {
-                print("tapped");
-              },
+              onTap: homeStore.tooglebalanceVisibility,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Icon(
-                  Icons.visibility,
-                  color: kNuPurple8E8390,
+                child: Observer(
+                  builder: (_) {
+                    return Icon(
+                      homeStore.balanceVisibility
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: kNuPurple8E8390,
+                    );
+                  },
                 ),
               ),
             ),

@@ -1,11 +1,13 @@
-
 import 'package:get_it/get_it.dart';
 
-final getIt = GetIt.instance;
+import '../feature/home/home_store.dart';
+import '../feature/product/product_store.dart';
+import '../repository/customer_repository.dart';
+
+GetIt locator = GetIt.instance;
 
 void setupLocator() {
- // getIt.registerSingleton<AppModel>(AppModel());
- //locator.registerFactory(() => AppInfo());
+  locator.registerSingleton<CustomerRepository>(CustomerRepository());
+  locator.registerSingleton<HomeStore>(HomeStore());
+  locator.registerSingleton<ProductStore>(ProductStore());
 }
-
-//final infoService = getIt.get<InfoService>();

@@ -38,6 +38,9 @@ dependencies:
 
   #https://pub.dev/packages/email_validator
   email_validator: ^1.0.4
+
+  #https://pub.dev/packages/intl
+  intl: ^0.16.1
   
   #https://pub.dev/packages/mobx
   mobx: ^1.2.1
@@ -60,8 +63,7 @@ dependencies:
   #https://pub.dev/packages/package_info
   package_info: ^0.4.1
 
-  #https://pub.dev/packages/google_fonts
-  google_fonts: ^1.1.0
+  
 
 
 dev_dependencies:
@@ -92,4 +94,3 @@ flutter:
           weight: 300
         - asset: fonts/GothamSSm-Medium.ttf
           weight: 500
-          
