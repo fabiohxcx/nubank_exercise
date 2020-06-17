@@ -129,7 +129,7 @@ Widget getOfferCard({Product product, num price}) {
                               Text('${getCurrencyFormated(price)}',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 15,
+                                      fontSize: 10,
                                       fontWeight: FontWeight.w300))
                             ],
                           ),
