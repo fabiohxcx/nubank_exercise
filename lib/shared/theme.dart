@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart';
 
@@ -13,65 +12,78 @@ var appTheme = ThemeData(
         );
 
 var appTextTheme = TextTheme(
-  headline1: GoogleFonts.roboto(
+  headline1: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 96,
     fontWeight: FontWeight.w300,
     letterSpacing: -1.5
   ),
-  headline2: GoogleFonts.roboto(
+  headline2: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 60,
     fontWeight: FontWeight.w300,
     letterSpacing: -0.5
   ),
-  headline3: GoogleFonts.roboto(
+  headline3: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 48,
     fontWeight: FontWeight.w400
   ),
-  headline4: GoogleFonts.roboto(
+  headline4: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 34,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25
   ),
-  headline5: GoogleFonts.roboto(
+  headline5: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 24,
     fontWeight: FontWeight.w400
   ),
-  headline6: GoogleFonts.roboto(
+  headline6: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 20,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.15
   ),
-  subtitle1: GoogleFonts.roboto(
+  subtitle1: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 16,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.15
   ),
-  subtitle2: GoogleFonts.roboto(
+  subtitle2: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 14,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.1
   ),
-  bodyText1: GoogleFonts.roboto(
+  bodyText1: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 16,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.5
   ),
-  bodyText2: GoogleFonts.roboto(
+  bodyText2: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 14,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25
   ),
-  button: GoogleFonts.roboto(
+  button: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 14,
     fontWeight: FontWeight.w500,
     letterSpacing: 1.25
   ),
-  caption: GoogleFonts.roboto(
+  caption: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 12,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4
   ),
-  overline: GoogleFonts.roboto(
+  overline: TextStyle(
+    fontFamily: "Gotham",
     fontSize: 10,
     fontWeight: FontWeight.w400,
     letterSpacing: 1.5
