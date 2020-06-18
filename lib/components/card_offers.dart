@@ -1,12 +1,14 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nuconta_marketplace/feature/home/home_store.dart';
-import 'package:nuconta_marketplace/model/product.dart';
-import 'package:nuconta_marketplace/utils/service_locator.dart';
-import 'package:nuconta_marketplace/utils/text_utils.dart';
+import 'package:nuconta_marketplace/model/models.dart';
 
+import '../feature/home/home_store.dart';
+import '../feature/product/product_detail_page.dart';
 import '../shared/colors.dart';
+import '../utils/service_locator.dart';
+import '../utils/text_utils.dart';
 
 class CardOffers extends StatelessWidget {
   final homeStore = locator.get<HomeStore>();
@@ -57,8 +59,7 @@ class CardOffers extends StatelessWidget {
                   mainAxisSpacing: 10.0),
               itemBuilder: (BuildContext context, int index) {
                 return getOfferCard(
-                    product: homeStore.customer.offers[index].product,
-                    price: homeStore.customer.offers[index].price);
+                    offer: homeStore.customer.offers[index], context: context);
               })
         ],
       ),
@@ -66,7 +67,7 @@ class CardOffers extends StatelessWidget {
   }
 }
 
-Widget getOfferCard({Product product, num price}) {
+Widget getOfferCard({Offer offer, BuildContext context}) {
   return Container(
     height: 170,
     width: 150,
@@ -76,7 +77,7 @@ Widget getOfferCard({Product product, num price}) {
         colorFilter: new ColorFilter.mode(
             Colors.black.withOpacity(0.2), BlendMode.dstATop),
         fit: BoxFit.cover,
-        image: NetworkImage(product.image),
+        image: NetworkImage(offer.product.image),
       ),
       borderRadius: BorderRadius.all(Radius.circular(5.0)),
       color: Colors.white,
@@ -85,7 +86,13 @@ Widget getOfferCard({Product product, num price}) {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          print(product.name);
+          print(offer.product.name);
+
+          Navigator.pushNamed(
+            context,
+            ProductDetailsPage.id,
+            arguments: offer,
+          );
         },
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -110,7 +117,7 @@ Widget getOfferCard({Product product, num price}) {
                       ),
                       CircleAvatar(
                         radius: 50,
-                        backgroundImage: NetworkImage(product.image),
+                        backgroundImage: NetworkImage(offer.product.image),
                       ),
                       Positioned(
                         bottom: 0,
@@ -126,7 +133,7 @@ Widget getOfferCard({Product product, num price}) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              Text('${getCurrencyFormated(price)}',
+                              Text('${getCurrencyFormated(offer.price)}',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 10,
@@ -138,7 +145,7 @@ Widget getOfferCard({Product product, num price}) {
                     ],
                   ),
                   Text(
-                    product.name.toUpperCase(),
+                    offer.product.name.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 12,

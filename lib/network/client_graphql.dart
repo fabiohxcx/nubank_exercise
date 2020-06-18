@@ -1,4 +1,4 @@
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:graphql/client.dart';
 import 'package:nuconta_marketplace/shared/constants.dart';
 
 class ConfigGraphQL {

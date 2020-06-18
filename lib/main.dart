@@ -14,13 +14,12 @@ void main() {
 }
 
 class NuContaApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: kPrimaryDarkColor,
     ));
-    return MaterialApp(
+    var materialApp = MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NuConta MarketPlace',
       theme: appTheme,
@@ -28,7 +27,8 @@ class NuContaApp extends StatelessWidget {
       routes: {
         HomePage.id: (_) => HomePage(),
         ProductDetailsPage.id: (_) => ProductDetailsPage(),
-      }
+      },
     );
+    return materialApp;
   }
 }

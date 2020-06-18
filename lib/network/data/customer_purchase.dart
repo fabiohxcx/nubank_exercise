@@ -1,14 +1,17 @@
 class CustomerPurchase {
-  static String purchase = """
+  static String purchase(String id) {
+    return """
   mutation {
-    purchase (offerId: \$id: String!) {
+    purchase (offerId: \"$id\") {
         success
         errorMessage
         customer {
             id
             name
+            balance
         }
     }
   }
   """;
+  }
 }

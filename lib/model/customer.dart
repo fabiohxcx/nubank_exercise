@@ -11,7 +11,7 @@ class Customer {
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'] ??= "";
     name = json['name'] ??= "";
-    balance = json['balance'] ??= "";
+    balance = json['balance'] ??= 0;
     if (json['offers'] != null) {
       offers = new List<Offer>();
       json['offers'].forEach((v) {
