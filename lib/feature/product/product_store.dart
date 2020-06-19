@@ -15,10 +15,16 @@ abstract class _ProductStore with Store {
   @observable
   PageState state;
 
+  @observable
+  String errorMessage;
+
+
+
   @action
   Future<void> purchaseProduct(String id) async {
     state = PageState.loading;
     print('fetching customer');
+    
     PurchaseResponse response = await repository.purchase(offerId: id);
 
     var homeStore = locator.get<HomeStore>();

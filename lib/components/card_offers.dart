@@ -19,6 +19,7 @@ class CardOffers extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(20, 30, 20, 20),
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -96,10 +97,10 @@ Widget getOfferCard({Offer offer, BuildContext context}) {
         },
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: new BackdropFilter(
-            filter: new ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-            child: new Container(
-              decoration: new BoxDecoration(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+            child: Container(
+              decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.0),
                 border: Border.all(color: kNuPurple8A05BE),
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),

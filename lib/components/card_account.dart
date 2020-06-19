@@ -20,6 +20,7 @@ class CardAccount extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
               decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(2.0)),
               ),
               child: Container(
                 child: Column(
@@ -74,8 +75,12 @@ class CardAccount extends StatelessWidget {
               ),
             ),
             Container(
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(2.0)),
+                color: kNuGrayEDEDED,
+              ),
               margin: EdgeInsets.fromLTRB(20, 0, 20, 15),
-              color: kNuGrayEDEDED,
               width: double.infinity,
               child: Material(
                 color: Colors.transparent,
