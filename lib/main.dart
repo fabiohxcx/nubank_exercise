@@ -20,6 +20,7 @@ class NuContaApp extends StatelessWidget {
       statusBarColor: kPrimaryDarkColor,
     ));
     var materialApp = MaterialApp(
+      //showSemanticsDebugger: true,
       debugShowCheckedModeBanner: false,
       title: 'NuConta MarketPlace',
       theme: appTheme,

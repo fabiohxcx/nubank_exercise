@@ -74,6 +74,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               child: Image(
+                semanticLabel: 'Nubank logo',
                 image: AssetImage('lib/assets/ic_nu_logo.png'),
                 height: 50,
                 width: 50,

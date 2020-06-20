@@ -69,91 +69,95 @@ class CardOffers extends StatelessWidget {
 }
 
 Widget getOfferCard({Offer offer, BuildContext context}) {
-  return Container(
-    height: 170,
-    width: 150,
-    decoration: BoxDecoration(
-      //border: Border.all(color: kNuPurple8A05BE),
-      image: DecorationImage(
-        colorFilter:
-            ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
-        fit: BoxFit.cover,
-        image: NetworkImage(offer.product.image),
+  return Semantics(
+    button: true,
+    label: 'Offer ${offer.product.name}',
+      child: Container(
+      height: 170,
+      width: 150,
+      decoration: BoxDecoration(
+        //border: Border.all(color: kNuPurple8A05BE),
+        image: DecorationImage(
+          colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+          fit: BoxFit.cover,
+          image: NetworkImage(offer.product.image),
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        color: Colors.white,
       ),
-      borderRadius: BorderRadius.all(Radius.circular(5.0)),
-      color: Colors.white,
-    ),
-    child: Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () {
-          print(offer.product.name);
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            print(offer.product.name);
 
-          Navigator.pushNamed(
-            context,
-            ProductDetailsPage.id,
-            arguments: offer,
-          );
-        },
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.0),
-                border: Border.all(color: kNuPurple8A05BE),
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      Container(
-                        width: double.infinity,
-                      ),
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(offer.product.image),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(5.0)),
-                            color: kNuPurple8A05BE,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Text('${getCurrencyFormated(offer.price)}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w300))
-                            ],
-                          ),
+            Navigator.pushNamed(
+              context,
+              ProductDetailsPage.id,
+              arguments: offer,
+            );
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.0),
+                  border: Border.all(color: kNuPurple8A05BE),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: double.infinity,
                         ),
-                      )
-                    ],
-                  ),
-                  Text(
-                    offer.product.name.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: kNuOrange,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(offer.product.image),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          child: Container(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5.0)),
+                              color: kNuPurple8A05BE,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Text('${getCurrencyFormated(offer.price)}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w300))
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Text(
+                      offer.product.name.toUpperCase(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: kNuOrange,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

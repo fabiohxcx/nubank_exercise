@@ -128,11 +128,15 @@ class CardAccount extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
                 child: Observer(
                   builder: (_) {
-                    return Icon(
-                      homeStore.balanceVisibility
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: kNuPurple8E8390,
+                    return Semantics(
+                      label: 'balance visibility buttom',
+                      hint: 'show balance buttom',
+                      child: Icon(
+                        homeStore.balanceVisibility
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: kNuPurple8E8390,
+                      ),
                     );
                   },
                 ),

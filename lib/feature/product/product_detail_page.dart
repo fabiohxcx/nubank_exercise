@@ -32,9 +32,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             fontSize: 20,
           ),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.chevron_left, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
+        leading: Semantics(
+          button: true,
+          label: 'back button',
+          child: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
       ),
       body: Observer(builder: (_) {
@@ -70,6 +74,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       child: Image.network(
                                         offer.product.image,
                                         fit: BoxFit.cover,
+                                        semanticLabel: 'Product\'s Image',
                                       ),
                                     ),
                                   ),
