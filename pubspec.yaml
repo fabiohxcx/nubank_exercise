@@ -74,8 +74,12 @@ dev_dependencies:
     sdk: flutter
   #https://pub.dev/packages/build_runner  
   build_runner:
+
   #https://pub.dev/packages/mobx_codegen
-  mobx_codegen: 
+  mobx_codegen:
+    
+  #https://pub.dev/packages/effective_dart
+  effective_dart: ^1.2.3
 
 
 flutter:

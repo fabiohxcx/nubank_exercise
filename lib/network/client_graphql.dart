@@ -1,5 +1,6 @@
 import 'package:graphql/client.dart';
-import 'package:nuconta_marketplace/shared/constants.dart';
+
+import '../shared/constants.dart';
 
 class ConfigGraphQL {
   static final HttpLink httpLink = HttpLink(

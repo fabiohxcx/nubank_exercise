@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nuconta_marketplace/feature/home/home_page.dart';
-import 'package:nuconta_marketplace/feature/product/product_detail_page.dart';
 
+import 'feature/home/home_page.dart';
+import 'feature/product/product_detail_page.dart';
 import 'shared/colors.dart';
 import 'shared/theme.dart';
 import 'utils/service_locator.dart';

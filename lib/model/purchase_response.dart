@@ -11,16 +11,16 @@ class PurchaseResponse {
     success = json['success'];
     errorMessage = json['errorMessage'] ??= '';
     customer = json['customer'] != null
-        ? new Customer.fromJson(json['customer'])
+        ? Customer.fromJson(json['customer'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
-    data['errorMessage'] = this.errorMessage;
-    if (this.customer != null) {
-      data['customer'] = this.customer.toJson();
+    var data =  Map<String, dynamic>();
+    data['success'] = success;
+    data['errorMessage'] = errorMessage;
+    if (customer != null) {
+      data['customer'] = customer.toJson();
     }
     return data;
   }

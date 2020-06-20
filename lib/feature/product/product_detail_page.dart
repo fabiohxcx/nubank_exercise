@@ -60,7 +60,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           MediaQuery.of(context).size.height *
                                               0.30,
                                       width: double.infinity,
-                                      decoration: new BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Colors.white.withOpacity(0.0),
                                         border:
                                             Border.all(color: kNuPurple8A05BE),

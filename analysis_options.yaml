@@ -1,0 +1,22 @@
+include: package:effective_dart/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/models/*.g.dart
+    - test/widget_test.dart
+
+linter:
+  rules:
+    public_member_api_docs: false
+    avoid_classes_with_only_static_members: false
+    lines_longer_than_80_chars: false
+    constant_identifier_names: false
+    avoid_function_literals_in_foreach_calls: false
+    use_setters_to_change_properties: false
+    avoid_catches_without_on_clauses: false
+    avoid_positional_boolean_parameters: false
+    unnecessary_brace_in_string_interps: false
+    one_member_abstracts: false
+    type_annotate_public_apis: false
+    file_names: false
+    prefer_collection_literals: false

@@ -1,8 +1,9 @@
 import 'package:mobx/mobx.dart';
-import 'package:nuconta_marketplace/feature/home/home_store.dart';
-import 'package:nuconta_marketplace/repository/customer_repository.dart';
-import 'package:nuconta_marketplace/shared/page_state.dart';
-import 'package:nuconta_marketplace/utils/service_locator.dart';
+
+import '../../repository/customer_repository.dart';
+import '../../shared/page_state.dart';
+import '../../utils/service_locator.dart';
+import '../home/home_store.dart';
 
 part 'product_store.g.dart';
 

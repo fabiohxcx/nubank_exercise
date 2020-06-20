@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nuconta_marketplace/model/models.dart';
 
 import '../feature/home/home_store.dart';
 import '../feature/product/product_detail_page.dart';
+import '../model/models.dart';
 import '../shared/colors.dart';
 import '../utils/service_locator.dart';
 import '../utils/text_utils.dart';
@@ -58,7 +58,7 @@ class CardOffers extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10.0,
                   mainAxisSpacing: 10.0),
-              itemBuilder: (BuildContext context, int index) {
+              itemBuilder: (context, index) {
                 return getOfferCard(
                     offer: homeStore.customer.offers[index], context: context);
               })
@@ -75,8 +75,8 @@ Widget getOfferCard({Offer offer, BuildContext context}) {
     decoration: BoxDecoration(
       //border: Border.all(color: kNuPurple8A05BE),
       image: DecorationImage(
-        colorFilter: new ColorFilter.mode(
-            Colors.black.withOpacity(0.2), BlendMode.dstATop),
+        colorFilter:
+            ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
         fit: BoxFit.cover,
         image: NetworkImage(offer.product.image),
       ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:nuconta_marketplace/feature/home/home_store.dart';
-import 'package:nuconta_marketplace/shared/colors.dart';
-import 'package:nuconta_marketplace/utils/service_locator.dart';
-import 'package:nuconta_marketplace/utils/text_utils.dart';
+
+import '../feature/home/home_store.dart';
+import '../shared/colors.dart';
+import '../utils/service_locator.dart';
+import '../utils/text_utils.dart';
 
 class CardAccount extends StatelessWidget {
   final homeStore = locator.get<HomeStore>();
@@ -121,7 +122,7 @@ class CardAccount extends StatelessWidget {
           right: 30.0,
           child: Material(
             child: InkWell(
-              customBorder: new CircleBorder(),
+              customBorder: CircleBorder(),
               onTap: homeStore.tooglebalanceVisibility,
               child: Container(
                 padding: EdgeInsets.all(10.0),

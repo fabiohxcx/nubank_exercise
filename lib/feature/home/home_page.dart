@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lottie/lottie.dart';
-import 'package:nuconta_marketplace/components/components.dart';
-import 'package:nuconta_marketplace/feature/home/home_store.dart';
-import 'package:nuconta_marketplace/shared/colors.dart';
-import 'package:nuconta_marketplace/shared/page_state.dart';
-import 'package:nuconta_marketplace/utils/service_locator.dart';
-import 'package:nuconta_marketplace/utils/text_utils.dart';
+
+import '../../components/components.dart';
+import '../../shared/colors.dart';
+import '../../shared/page_state.dart';
+import '../../utils/service_locator.dart';
+import '../../utils/text_utils.dart';
+import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
           body: Center(
             child: Observer(
               builder: (_) {
+                
                 switch (homeStore.state) {
                   case PageState.initial:
                     return buildLoading();
@@ -38,6 +40,8 @@ class _HomePageState extends State<HomePage> {
                   case PageState.error:
                     return buildErrorContent();
                 }
+
+                return Container();
               },
             ),
           ),

@@ -13,20 +13,20 @@ class Customer {
     name = json['name'] ??= "";
     balance = json['balance'] ??= 0;
     if (json['offers'] != null) {
-      offers = new List<Offer>();
+      offers = List<Offer>();
       json['offers'].forEach((v) {
-        offers.add(new Offer.fromJson(v));
+        offers.add(Offer.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['balance'] = this.balance;
-    if (this.offers != null) {
-      data['offers'] = this.offers.map((v) => v.toJson()).toList();
+    final data = Map<String, dynamic>();
+    data['id'] = id;
+    data['name'] = name;
+    data['balance'] = balance;
+    if (offers != null) {
+      data['offers'] = offers.map((v) => v.toJson()).toList();
     }
     return data;
   }
