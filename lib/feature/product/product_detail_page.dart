@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import '../../model/offer.dart';
 import '../../shared/colors.dart';
 import '../../shared/page_state.dart';
+import '../../utils/service_locator.dart';
 import '../../utils/text_utils.dart';
 import 'product_store.dart';
 
@@ -17,7 +18,7 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  final productStore = ProductStore();
+  final ProductStore productStore = locator();
 
   @override
   Widget build(BuildContext context) {

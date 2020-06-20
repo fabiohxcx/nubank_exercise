@@ -1,17 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../model/models.dart';
 import '../../repository/customer_repository.dart';
 import '../../shared/page_state.dart';
-import '../../utils/service_locator.dart';
 
 part 'home_store.g.dart';
 
-class HomeStore = _HomeStore with _$HomeStore;
+class HomeStore extends _HomeStore with _$HomeStore {
+  final CustomerRepository repository;
+
+  HomeStore({@required this.repository}) : super(repository);
+}
 
 abstract class _HomeStore with Store {
-  final repository = locator.get<CustomerRepository>();
+  final CustomerRepository repository;
+
+  _HomeStore(this.repository) {
+    fetchCustomer();
+    state = PageState.initial;
+  }
 
   @observable
   Customer customer;
@@ -30,11 +39,6 @@ abstract class _HomeStore with Store {
 
   @observable
   bool balanceVisibility = true;
-
-  _HomeStore() {
-    fetchCustomer();
-    state = PageState.initial;
-  }
 
   @action
   Future<void> fetchCustomer() async {

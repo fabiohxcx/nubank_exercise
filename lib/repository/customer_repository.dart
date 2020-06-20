@@ -3,14 +3,22 @@ import 'package:graphql/client.dart';
 
 import '../model/customer.dart';
 import '../model/purchase_response.dart';
-import '../network/client_graphql.dart';
 import '../network/data/customer_fetch.dart';
 import '../network/data/customer_purchase.dart';
 import '../network/failures.dart';
 
-class CustomerRepository {
-  final _client = ConfigGraphQL.initializeClient();
+abstract class CustomerRepository {
+  Future<Either<RequestFail, Customer>> fetchCustomer({String id});
+  Future<Either<RequestFail, PurchaseResponse>> purchase({String offerId});
+}
 
+class CustomerRepositoryImpl implements CustomerRepository {
+  
+  final GraphQLClient _client;
+
+  CustomerRepositoryImpl(this._client);
+
+  @override
   Future<Either<RequestFail, Customer>> fetchCustomer({String id}) async {
     final options = QueryOptions(
       documentNode: gql(CustomerFetch.fetchCustomer),
@@ -32,6 +40,7 @@ class CustomerRepository {
     }
   }
 
+  @override
   Future<Either<RequestFail, PurchaseResponse>> purchase(
       {String offerId}) async {
     final options = MutationOptions(
@@ -56,9 +65,7 @@ class CustomerRepository {
       }
 
       return Left(RequestFail(message: response.errorMessage));
-      
     } on Exception catch (e) {
-
       return Left(RequestFail(message: e.toString()));
     }
   }

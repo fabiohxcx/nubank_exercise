@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../repository/customer_repository.dart';
@@ -7,10 +8,16 @@ import '../home/home_store.dart';
 
 part 'product_store.g.dart';
 
-class ProductStore = _ProductStore with _$ProductStore;
+class ProductStore extends _ProductStore with _$ProductStore {
+  final CustomerRepository repository;
+
+  ProductStore({@required this.repository}) : super(repository);
+}
 
 abstract class _ProductStore with Store {
-  final repository = locator.get<CustomerRepository>();
+  final CustomerRepository repository;
+
+  _ProductStore(this.repository);
 
   @observable
   PageState state;
