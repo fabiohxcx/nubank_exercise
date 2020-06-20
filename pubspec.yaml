@@ -34,7 +34,7 @@ dependencies:
   dio: ^3.0.9
 
   #https://pub.dev/packages/graphql
-  graphql: ^3.0.0
+  graphql: 3.0.1-beta.3
 
   #https://pub.dev/packages/email_validator
   email_validator: ^1.0.4
@@ -62,6 +62,9 @@ dependencies:
 
   #https://pub.dev/packages/package_info
   package_info: ^0.4.1
+
+  #https://pub.dev/packages/dartz
+  dartz: ^0.9.1
 
   
 

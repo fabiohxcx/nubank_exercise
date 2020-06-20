@@ -1,6 +1,5 @@
 import 'package:mobx/mobx.dart';
 import 'package:nuconta_marketplace/feature/home/home_store.dart';
-import 'package:nuconta_marketplace/model/purchase_response.dart';
 import 'package:nuconta_marketplace/repository/customer_repository.dart';
 import 'package:nuconta_marketplace/shared/page_state.dart';
 import 'package:nuconta_marketplace/utils/service_locator.dart';
@@ -18,20 +17,26 @@ abstract class _ProductStore with Store {
   @observable
   String errorMessage;
 
-
+  @computed
+  bool get success => errorMessage == null;
 
   @action
   Future<void> purchaseProduct(String id) async {
     state = PageState.loading;
     print('fetching customer');
-    
-    PurchaseResponse response = await repository.purchase(offerId: id);
 
-    var homeStore = locator.get<HomeStore>();
+    final result = await repository.purchase(offerId: id);
 
-    homeStore.setBalance(response.customer.balance);
-
-    print(response.toJson());
+    result.fold((failure) {
+      state = PageState.error;
+      errorMessage = failure.message;
+    }, (purchaseResponse) {
+      state = PageState.error;
+      errorMessage = null;
+      state = PageState.loaded;
+      var homeStore = locator.get<HomeStore>();
+      homeStore.setBalance(purchaseResponse.customer.balance);
+    });
 
     print('fetching finished');
     state = PageState.loaded;

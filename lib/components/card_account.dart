@@ -59,13 +59,20 @@ class CardAccount extends StatelessWidget {
                     ),
                     Observer(
                       builder: (_) {
-                        return Text(
-                          '${getCurrencyFormated(homeStore.balance)}',
-                          style: TextStyle(
-                              fontFamily: "Gotham",
-                              fontSize: 30,
-                              fontWeight: FontWeight.w300,
-                              color: kNuBlue),
+                        return Container(
+                          color: homeStore.balanceVisibility
+                              ? Colors.transparent
+                              : kNuGrayEDEDED,
+                          child: Text(
+                            '${getCurrencyFormated(homeStore.balance)}',
+                            style: TextStyle(
+                                fontFamily: "Gotham",
+                                fontSize: 30,
+                                fontWeight: FontWeight.w300,
+                                color: homeStore.balanceVisibility
+                                    ? kNuBlue
+                                    : Colors.transparent),
+                          ),
                         );
                       },
                     ),
@@ -113,7 +120,7 @@ class CardAccount extends StatelessWidget {
           top: 30.0,
           right: 30.0,
           child: Material(
-            child: new InkWell(
+            child: InkWell(
               customBorder: new CircleBorder(),
               onTap: homeStore.tooglebalanceVisibility,
               child: Container(

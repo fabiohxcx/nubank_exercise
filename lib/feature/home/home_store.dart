@@ -23,6 +23,9 @@ abstract class _HomeStore with Store {
   PageState state;
 
   @observable
+  String errorMessage;
+
+  @observable
   List<Transaction> transactions = [];
 
   @observable
@@ -36,12 +39,24 @@ abstract class _HomeStore with Store {
   @action
   Future<void> fetchCustomer() async {
     state = PageState.loading;
+
     print('fetching customer');
-    customer = await repository.fetchCustomer(id: '');
-    setBalance(customer.balance);
-    print(customer.toJson());
+
+    final result =
+        await repository.fetchCustomer(id: 'customer_id_after_login');
+
+    result.fold((failure) {
+      state = PageState.error;
+      errorMessage = failure.message;
+    }, (customerResponse) {
+      customer = customerResponse;
+      setBalance(customer.balance);
+      state = PageState.loaded;
+
+      print(customer.toJson());
+    });
+
     print('fetching finished');
-    state = PageState.loaded;
   }
 
   @action
