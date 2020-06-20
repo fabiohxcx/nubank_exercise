@@ -60,20 +60,31 @@ class CardAccount extends StatelessWidget {
                     ),
                     Observer(
                       builder: (_) {
-                        return Container(
-                          color: homeStore.balanceVisibility
-                              ? Colors.transparent
-                              : kNuGrayEDEDED,
-                          child: Text(
+                        return AnimatedCrossFade(
+                          duration: const Duration(milliseconds: 500),
+                          firstChild: Text(
                             '${getCurrencyFormated(homeStore.balance)}',
                             style: TextStyle(
                                 fontFamily: "Gotham",
                                 fontSize: 30,
                                 fontWeight: FontWeight.w300,
-                                color: homeStore.balanceVisibility
-                                    ? kNuBlue
-                                    : Colors.transparent),
+                                color: kNuBlue),
                           ),
+                          secondChild: Container(
+                            width: 150,
+                            color: kNuGrayEDEDED,
+                            child: Text(
+                              '',
+                              style: TextStyle(
+                                fontFamily: "Gotham",
+                                fontSize: 30,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                          crossFadeState: homeStore.balanceVisibility
+                              ? CrossFadeState.showFirst
+                              : CrossFadeState.showSecond,
                         );
                       },
                     ),
