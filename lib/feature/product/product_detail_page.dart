@@ -11,13 +11,8 @@ import '../../utils/service_locator.dart';
 import '../../utils/text_utils.dart';
 import 'product_store.dart';
 
-class ProductDetailsPage extends StatefulWidget {
+class ProductDetailsPage extends StatelessWidget {
   static const String id = 'product_detail_page';
-  @override
-  _ProductDetailsPageState createState() => _ProductDetailsPageState();
-}
-
-class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductStore productStore = locator();
 
   @override
@@ -44,7 +39,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       ),
       body: Observer(builder: (_) {
         return productStore.state == PageState.loaded
-            ? _buildResultBody()
+            ? _buildResultBody(context)
             : Stack(
                 children: <Widget>[
                   Column(
@@ -161,7 +156,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 
-  Widget _buildResultBody() {
+  Widget _buildResultBody(BuildContext context) {
     return Center(
         child: Padding(
       padding: EdgeInsets.all(50),

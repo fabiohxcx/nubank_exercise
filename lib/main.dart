@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'feature/home/home_animator.dart';
 import 'feature/home/home_page.dart';
 import 'feature/product/product_detail_page.dart';
 import 'shared/colors.dart';
@@ -26,7 +27,7 @@ class NuContaApp extends StatelessWidget {
       theme: appTheme,
       initialRoute: HomePage.id,
       routes: {
-        HomePage.id: (_) => HomePage(),
+        HomePage.id: (_) => HomeAnimator(),
         ProductDetailsPage.id: (_) => ProductDetailsPage(),
       },
     );
