@@ -37,122 +37,124 @@ class ProductDetailsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Observer(builder: (_) {
-        return productStore.state == PageState.loaded
-            ? _buildResultBody(context)
-            : Stack(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
-                                    child: Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.30,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.0),
-                                        border:
-                                            Border.all(color: kNuPurple8A05BE),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5.0)),
-                                      ),
-                                      child: Hero(
-                                        tag: 'hero-${offer.product.id}',
-                                        child: Image.network(
-                                          offer.product.image,
-                                          fit: BoxFit.cover,
-                                          semanticLabel: 'Product\'s Image',
+      body: SafeArea(
+              child: Observer(builder: (_) {
+          return productStore.state == PageState.loaded
+              ? _buildResultBody(context)
+              : Stack(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.30,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.0),
+                                          border:
+                                              Border.all(color: kNuPurple8A05BE),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5.0)),
+                                        ),
+                                        child: Hero(
+                                          tag: 'hero-${offer.product.id}',
+                                          child: Image.network(
+                                            offer.product.image,
+                                            fit: BoxFit.cover,
+                                            semanticLabel: 'Product\'s Image',
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Divider(
-                                    color: kPrimaryColor,
-                                  ),
-                                  Text(
-                                    '${offer.product.name}',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 20,
-                                        color: kPrimaryColor),
-                                  ),
-                                  Divider(
-                                    color: kPrimaryColor,
-                                  ),
-                                  Text(
-                                    '${getCurrencyFormated(offer.price)}',
-                                    style: TextStyle(
+                                    Divider(
+                                      color: kPrimaryColor,
+                                    ),
+                                    Text(
+                                      '${offer.product.name}',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          color: kPrimaryColor),
+                                    ),
+                                    Divider(
+                                      color: kPrimaryColor,
+                                    ),
+                                    Text(
+                                      '${getCurrencyFormated(offer.price)}',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 20,
+                                          color: kNuOrange),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      '${offer.product.description}',
+                                      style: TextStyle(
                                         fontWeight: FontWeight.w300,
                                         fontSize: 20,
-                                        color: kNuOrange),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '${offer.product.description}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: FractionalOffset.bottomCenter,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 15.0, vertical: 10.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    color: kNuGreen,
-                                    child: OutlineButton(
-                                      borderSide: BorderSide(color: kNuGreen),
-                                      highlightedBorderColor: kNuGreen,
+                              Expanded(
+                                child: Align(
+                                  alignment: FractionalOffset.bottomCenter,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 15.0, vertical: 10.0),
+                                    child: Container(
+                                      width: double.infinity,
                                       color: kNuGreen,
-                                      onPressed: () {
-                                        productStore.purchaseProduct(offer.id);
-                                      },
-                                      child: Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 15),
-                                        child: Text(
-                                          'PURCHASE',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w500),
+                                      child: OutlineButton(
+                                        borderSide: BorderSide(color: kNuGreen),
+                                        highlightedBorderColor: kNuGreen,
+                                        color: kNuGreen,
+                                        onPressed: () {
+                                          productStore.purchaseProduct(offer.id);
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsets.symmetric(vertical: 15),
+                                          child: Text(
+                                            'PURCHASE',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w500),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  productStore.state == PageState.loading
-                      ? _showLoader()
-                      : Container()
-                ],
-              );
-      }),
+                      ],
+                    ),
+                    productStore.state == PageState.loading
+                        ? _showLoader()
+                        : Container()
+                  ],
+                );
+        }),
+      ),
     );
   }
 

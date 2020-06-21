@@ -54,6 +54,21 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
+  final _$errorMessageAtom = Atom(name: '_HomeStore.errorMessage');
+
+  @override
+  String get errorMessage {
+    _$errorMessageAtom.reportRead();
+    return super.errorMessage;
+  }
+
+  @override
+  set errorMessage(String value) {
+    _$errorMessageAtom.reportWrite(value, super.errorMessage, () {
+      super.errorMessage = value;
+    });
+  }
+
   final _$transactionsAtom = Atom(name: '_HomeStore.transactions');
 
   @override
@@ -132,6 +147,7 @@ mixin _$HomeStore on _HomeStore, Store {
 customer: ${customer},
 balance: ${balance},
 state: ${state},
+errorMessage: ${errorMessage},
 transactions: ${transactions},
 balanceVisibility: ${balanceVisibility}
     ''';

@@ -9,6 +9,13 @@ part of 'product_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ProductStore on _ProductStore, Store {
+  Computed<bool> _$successComputed;
+
+  @override
+  bool get success => (_$successComputed ??=
+          Computed<bool>(() => super.success, name: '_ProductStore.success'))
+      .value;
+
   final _$stateAtom = Atom(name: '_ProductStore.state');
 
   @override
@@ -24,6 +31,21 @@ mixin _$ProductStore on _ProductStore, Store {
     });
   }
 
+  final _$errorMessageAtom = Atom(name: '_ProductStore.errorMessage');
+
+  @override
+  String get errorMessage {
+    _$errorMessageAtom.reportRead();
+    return super.errorMessage;
+  }
+
+  @override
+  set errorMessage(String value) {
+    _$errorMessageAtom.reportWrite(value, super.errorMessage, () {
+      super.errorMessage = value;
+    });
+  }
+
   final _$purchaseProductAsyncAction =
       AsyncAction('_ProductStore.purchaseProduct');
 
@@ -35,7 +57,9 @@ mixin _$ProductStore on _ProductStore, Store {
   @override
   String toString() {
     return '''
-state: ${state}
+state: ${state},
+errorMessage: ${errorMessage},
+success: ${success}
     ''';
   }
 }

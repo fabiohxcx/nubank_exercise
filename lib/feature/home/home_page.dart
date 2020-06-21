@@ -22,29 +22,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        color: kPrimaryColor,
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: Observer(
-              builder: (_) {
-                switch (homeStore.state) {
-                  case PageState.initial:
-                    return buildLoading();
-                  case PageState.loading:
-                    return buildLoading();
-                  case PageState.loaded:
-                    animation.controller.forward();
-                    return buildContent();
+    return Container(
+      color: kPrimaryColor,
+      child: SafeArea(
+        child: Container(
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Center(
+              child: Observer(
+                builder: (_) {
+                  switch (homeStore.state) {
+                    case PageState.initial:
+                      return buildLoading();
+                    case PageState.loading:
+                      return buildLoading();
+                    case PageState.loaded:
+                      animation.controller.forward();
+                      return buildContent();
 
-                  case PageState.error:
-                    return buildErrorContent();
-                }
+                    case PageState.error:
+                      return buildErrorContent();
+                  }
 
-                return Container();
-              },
+                  return Container();
+                },
+              ),
             ),
           ),
         ),
