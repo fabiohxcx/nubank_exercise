@@ -8,7 +8,9 @@ class Customer {
 
   Customer({this.id, this.name, this.balance, this.offers});
 
-  Customer.fromJson(Map<String, dynamic> json) {
+  Customer.fromJson(json) {
+    if (json == null) return;
+
     id = json['id'] ??= "";
     name = json['name'] ??= "";
     balance = json['balance'] ??= 0;
@@ -29,5 +31,10 @@ class Customer {
       data['offers'] = offers.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
 }

@@ -64,6 +64,7 @@ class CardAccount extends StatelessWidget {
                           duration: const Duration(milliseconds: 500),
                           firstChild: Text(
                             '${getCurrencyFormated(homeStore.balance)}',
+                            key: Key('balance_amount'),
                             style: TextStyle(
                                 fontFamily: "Gotham",
                                 fontSize: 30,
@@ -133,6 +134,7 @@ class CardAccount extends StatelessWidget {
           right: 30.0,
           child: Material(
             child: InkWell(
+              key: Key('visibility_balance'),
               customBorder: CircleBorder(),
               onTap: homeStore.tooglebalanceVisibility,
               child: Container(

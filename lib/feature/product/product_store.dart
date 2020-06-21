@@ -31,7 +31,7 @@ abstract class _ProductStore with Store {
   @action
   Future<void> purchaseProduct(String id) async {
     state = PageState.loading;
-    print('fetching customer');
+    print('purchasing');
 
     final result = await repository.purchase(offerId: id);
 
@@ -46,7 +46,7 @@ abstract class _ProductStore with Store {
       homeStore.setBalance(purchaseResponse.customer.balance);
     });
 
-    print('fetching finished');
+    print('purchasing finished');
     state = PageState.loaded;
   }
 }

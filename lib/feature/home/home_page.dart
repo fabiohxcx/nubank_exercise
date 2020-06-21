@@ -56,8 +56,6 @@ class HomePage extends StatelessWidget {
     return Center(
       child: Lottie.asset(
         'lib/assets/loading_cool.json',
-        //width: 100,
-        //height: 100,
         fit: BoxFit.fill,
       ),
     );

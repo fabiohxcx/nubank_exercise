@@ -88,6 +88,7 @@ Widget getOfferCard({Offer offer, BuildContext context}) {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          key: Key(offer.product.name),
           onTap: () {
             Navigator.pushNamed(
               context,
