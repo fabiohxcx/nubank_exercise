@@ -72,10 +72,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5.0)),
                                       ),
-                                      child: Image.network(
-                                        offer.product.image,
-                                        fit: BoxFit.cover,
-                                        semanticLabel: 'Product\'s Image',
+                                      child: Hero(
+                                        tag: 'hero-${offer.product.id}',
+                                        child: Image.network(
+                                          offer.product.image,
+                                          fit: BoxFit.cover,
+                                          semanticLabel: 'Product\'s Image',
+                                        ),
                                       ),
                                     ),
                                   ),
