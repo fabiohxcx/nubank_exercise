@@ -3,9 +3,9 @@ import 'package:graphql/client.dart';
 
 import '../model/customer.dart';
 import '../model/purchase_response.dart';
-import '../network/data/customer_fetch.dart';
-import '../network/data/customer_purchase.dart';
 import '../network/failures.dart';
+import '../network/query/customer_fetch.dart';
+import '../network/query/customer_purchase.dart';
 
 abstract class CustomerRepository {
   Future<Either<RequestFail, Customer>> fetchCustomer({String id});
