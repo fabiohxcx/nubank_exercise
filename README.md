@@ -4,19 +4,13 @@ A Flutter app where users spend their NuConta balance on awesome products.
 
 # Preview
 
----
-
 ![NuConta%20Marketplace%20663d3dc4087a4534943e3674a05f9ae7/Screenrecorder-2020-06-21-20-06.gif](NuConta%20Marketplace%20663d3dc4087a4534943e3674a05f9ae7/Screenrecorder-2020-06-21-20-06.gif)
 
 # Call flow
 
----
-
 ![NuConta%20Marketplace%20663d3dc4087a4534943e3674a05f9ae7/call_flow.jpg](NuConta%20Marketplace%20663d3dc4087a4534943e3674a05f9ae7/call_flow.jpg)
 
 # Code Structure
-
----
 
 ```
 project
@@ -42,8 +36,6 @@ project
 ```
 
 # Libs
-
----
 
 ## [MobX](https://pub.dev/packages/mobx)
 
@@ -114,7 +106,9 @@ It was developed some test codes in order to ensure a minimal code quality.
 
 Run the following command from the root of the project:
 
+```
 flutter test
+```
 
 ## Instrumentation tests
 
@@ -122,7 +116,9 @@ It was developed some instrumentations tests in order to check the navigations.
 
 Run the following command from the root of the project:
 
+```
 flutter drive --target=test_driver/app.dart
+```
 
 ## Test coverage
 
@@ -130,10 +126,14 @@ A simple command-line tool to collect test coverage information from Dart VM tes
 
 Run the following command from the root of the project:
 
+```
 flutter test --coverage
+```
 
 Result is saved in `coverage/lcov.info`. If you have `lcov` tool installed on your system (for Mac it's `brew install lcov`) you can generate coverage reports using `genhtml` command:
 
+```
 genhtml -o coverage coverage/lcov.info
 # Open in the default browser (mac):
 open coverage/index.html
+```
